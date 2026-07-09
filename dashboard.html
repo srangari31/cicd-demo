@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard — AxiomTechguru</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared landing page theme (colors, fonts, gradients, glass, dark/light mode) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Dashboard-only layout -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Toasts -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1200;" id="toastContainer"></div>
+
+    <div class="dash-shell">
+
+        <!-- Mobile backdrop -->
+        <div class="dash-sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <!-- ============ SIDEBAR ============ -->
+        <aside class="dash-sidebar" id="sidebar">
+
+            <a href="index.html" class="dash-logo">
+                <img src="assets/images/Logo.png" alt="AxiomTechguru Logo">
+                <span class="dash-logo-text">Axiom<span>Techguru</span></span>
+            </a>
+
+            <ul class="dash-nav" id="dashNav">
+                <li><a class="dash-nav-link active" data-page="dashboard"><i class="bi bi-house-door"></i> Dashboard</a>
+                </li>
+                <li><a class="dash-nav-link" data-page="courses"><i class="bi bi-book"></i> My Courses</a></li>
+                <li><a class="dash-nav-link" data-page="live"><i class="bi bi-camera-video"></i> Live Classes</a></li>
+                <li><a class="dash-nav-link" data-page="assignment"><i class="bi bi-journal-check"></i> Assignments</a>
+                </li>
+                <li><a class="dash-nav-link" data-page="practice"><i class="bi bi-code-slash"></i> Practice Lab</a></li>
+                <li><a class="dash-nav-link" data-page="projects"><i class="bi bi-kanban"></i> Projects</a></li>
+                <li><a class="dash-nav-link" data-page="internship"><i class="bi bi-briefcase"></i> Internship
+                        Portal</a></li>
+                <li><a class="dash-nav-link" data-page="certificates"><i class="bi bi-patch-check"></i> Certificates</a>
+                </li>
+                <li><a class="dash-nav-link" data-page="schedule"><i class="bi bi-calendar-event"></i> Schedule</a></li>
+                <li><a class="dash-nav-link" data-page="announcement"><i class="bi bi-megaphone"></i> Announcements</a>
+                </li>
+                <li><a class="dash-nav-link" data-page="profile"><i class="bi bi-person-circle"></i> Profile</a></li>
+                <li><a class="dash-nav-link" data-page="settings"><i class="bi bi-gear"></i> Settings</a></li>
+                <li class="dash-nav-divider"></li>
+                <li><a class="dash-nav-link dash-logout" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                </li>
+            </ul>
+
+        </aside>
+
+        <!-- ============ MAIN ============ -->
+        <main class="dash-main">
+
+            <!-- Topbar -->
+            <nav class="dash-topbar">
+
+                <button class="dash-menu-btn" id="menuToggle" aria-label="Toggle sidebar">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <form class="dash-search" id="searchForm">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search your courses...">
+                </form>
+
+                <div class="dash-topbar-actions">
+
+                    <button class="dash-icon-btn" id="themeToggle" type="button"
+                        aria-label="Toggle dark and light mode">
+                        <i class="bi bi-sun-fill" id="themeIconSun"></i>
+                        <i class="bi bi-moon-stars-fill" id="themeIconMoon"></i>
+                    </button>
+
+                    <div class="dropdown">
+                        <button class="dash-icon-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" id="notifBtn">
+                            <i class="bi bi-bell"></i>
+                            <span class="dash-notif-dot"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end cf-dropdown dash-notif-panel">
+                            <li class="dropdown-item"><strong>New live class scheduled</strong><br><small>JavaScript
+                                    Advanced · Today 7:00 PM</small></li>
+                            <li class="dropdown-item"><strong>Assignment graded</strong><br><small>Bootstrap Landing
+                                    Page · Scored 92%</small></li>
+                            <li class="dropdown-item"><strong>New internship posted</strong><br><small>Frontend
+                                    Developer · Remote</small></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn cf-user-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img id="studentAvatarImg" src="" alt="" class="d-none"
+                                style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                            <span class="cf-avatar d-none" id="studentAvatarInitial"></span>
+                            <span id="studentName">Student</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end cf-dropdown">
+                            <li><a class="dropdown-item" data-page="profile" href="#"><i
+                                        class="bi bi-person me-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item" data-page="settings" href="#"><i
+                                        class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" id="logoutBtnDropdown" href="#"><i
+                                        class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+
+            <!-- Page content, rendered by dashboard.js -->
+            <div class="dash-content" id="contentArea"></div>
+
+        </main>
+
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

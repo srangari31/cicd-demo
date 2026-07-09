@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "name":"Sahil Rangari",
+        "email":"atg.sahilrangari@gmail.com",
+        "password":"Sahil@123",
+        "role":"Student",
+        "course":"Full Stack Development",
+        "image":"https://i.pravatar.cc/150?img=11"
+    },
+    {
+        "id":2,
+        "name":"Harshl Mohadikar",
+        "email":"atg.harshlmohadikar@gmail.com",
+        "password":"Harshl@123",
+        "role":"Student",
+        "course":"Python Development",
+        "image":"https://i.pravatar.cc/150?img=12"
+    }
+]
